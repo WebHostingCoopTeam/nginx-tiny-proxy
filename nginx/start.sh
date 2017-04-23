@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "${NGINX_AUTH}" -eq "true" ]
+if [ "${NGINX_AUTH}" = "true" ]
   then
     echo NGINX_AUTH is  ${NGINX_AUTH}
     envsubst < /assets/proxy-password.template > /etc/nginx/conf.d/default.conf
