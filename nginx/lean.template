@@ -1,0 +1,9 @@
+server {
+  listen 80;
+  server_name ${NGINX_HOST}.${NGINX_DOMAIN};
+
+  location / {
+    proxy_pass http://${NGINX_SRC_HOST}:${NGINX_SRC_PORT};
+    proxy_set_header Host $host;
+  }
+}
