@@ -6,7 +6,7 @@ if [ "${NGINX_AUTH}" -eq "true" ]
     sh -c "echo -n '${NGINX_USER}:' >> /etc/nginx/.htpasswd"
     sh -c "echo ${NGINX_PASS}|openssl passwd -apr1 -stdin >>/etc/nginx/.htpasswd"
 else
-    cp /assets/proxy.conf /etc/nginx/conf.d/default.conf
+    envsubst < /assets/proxy.conf > /etc/nginx/conf.d/default.conf
 fi
 
 nginx -g 'daemon off;'
