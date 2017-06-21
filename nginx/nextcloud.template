@@ -4,7 +4,6 @@ upstream backend {
 
 server {
   listen 80;
-  
   # Add headers to serve security related headers
   add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
   add_header X-Content-Type-Options nosniff;
@@ -32,7 +31,7 @@ server {
     log_not_found off;
     access_log off;
   }
-    
+
   location ~ ^/(build|tests|config|lib|3rdparty|templates|data)/ {
     deny all;
   }
@@ -58,8 +57,6 @@ server {
     fastcgi_intercept_errors on;
   }
 
-  # Adding the cache control header for js and css files
-  # Make sure it is BELOW the location ~ \.php(?:$|/) { block
   location ~* \.(?:css|js)$ {
     add_header Cache-Control "public, max-age=7200";
     # Add headers to serve security related headers
@@ -97,6 +94,5 @@ server {
       proxy_set_header Upgrade $http_upgrade;
       proxy_set_header Connection "upgrade";
       proxy_set_header Host $http_host;
-  }
   }
 }
