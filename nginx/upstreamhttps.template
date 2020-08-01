@@ -5,7 +5,6 @@ upstream upstream_src {
 
 server {
   listen 80;
-  proxy_ssl  on;
   proxy_ssl_verify off;
   server_name ${NGINX_HOST}.${NGINX_DOMAIN};
   root /usr/share/nginx/html;
