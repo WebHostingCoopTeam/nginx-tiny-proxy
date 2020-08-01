@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-ENV WHC_NGINX 20170423
+ENV WHC_NGINX 20200204
 
 RUN apk update && \
 apk upgrade && \
