@@ -5,12 +5,12 @@ upstream upstream_src {
 
 server {
   listen 80;
+  proxy_ssl  on;
+  proxy_ssl_verify off;
   server_name ${NGINX_HOST}.${NGINX_DOMAIN};
   root /usr/share/nginx/html;
 
   location / {
-    proxy_ssl  off;
-    proxy_ssl_verify off;
     proxy_pass https://upstream_src;
     proxy_http_version 1.1;
     proxy_set_header Host $host;
